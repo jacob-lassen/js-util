@@ -39,10 +39,9 @@ describe('curry', () => {
     });
 
     it('Extra arguments are ignored', () => {
-        const unCurried = (a, b) => [a, b];
+        const unCurried = (a, b, ...args) => [a, b, ...args];
         const curried = curry(unCurried);
-        const partial = curried(1);
-        const result = partial(2);
+        const result = curried(1, 2, 3);
         expect(result).to.have.lengthOf(2)
             .and.have.all.members([1, 2]);
     });

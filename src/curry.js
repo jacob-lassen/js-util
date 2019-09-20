@@ -4,7 +4,7 @@ function curry(fn) {
     const curried = (...args) => {
         appliedArguments.push(...args);
         if (appliedArguments.length >= requiredArguments) {
-            return fn(...appliedArguments);
+            return fn(...appliedArguments.slice(0, requiredArguments));
         }
         return curried;
     }
